@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Canteen Management</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Canteen management system</h1>
+    <nav>
+      <ul>
+         <li><a href="index.html">Home</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Welcome to Our Canteen</h2>
+    <p>Delicious food, fast service!</p>
+  </section>
+
+  <section id="menu">
+    <h2>Menu</h2>
+
+    <!-- Pizza Category -->
+    <h2 class="category-title">Pizza</h2>
+    <div class="card-container">
+      <div class="card"><img src="images/pizza.jpg" alt="Pizza"><h3>Pizza</h3><p>₹100</p><button onclick="addItem('Pizza', 100)">Order now</button></div>
+      <div class="card"><img src="images/cheesepizza.jpg" alt="Cheese Pizza"><h3>Cheese Pizza</h3><p>₹120</p><button onclick="addItem('Cheese Pizza', 120)">Order now</button></div>
+      <div class="card"><img src="images/pepperoni.jpg" alt="Pepperoni Pizza"><h3>Pepperoni Pizza</h3><p>₹130</p><button onclick="addItem('Pepperoni Pizza', 130)">Order now</button></div>
+      <div class="card"><img src="images/vegpizza.jpg" alt="Veg Pizza"><h3>Veg Pizza</h3><p>₹100</p><button onclick="addItem('Veg Pizza', 100)">Order now</button></div>
+      <div class="card"><img src="images/paneerpizza.jpg" alt="Paneer Pizza"><h3>Paneer Pizza</h3><p>₹120</p><button onclick="addItem('Paneer Pizza', 120)">Order now</button></div>
+      
+    </div>
+
+    <!-- Tiffins Category -->
+    <h2 class="category-title">Tiffins</h2>
+    <div class="card-container">
+      <div class="card"><img src="images/dosa.jpg" alt="Dosa"><h3>Masala Dosa</h3><p>₹40</p><button onclick="addItem('Dosa', 40)">Order now</button></div>
+      <div class="card"><img src="images/idli.jpg" alt="Idli"><h3>Idli (3 pcs)</h3><p>₹30</p><button onclick="addItem('Idli', 30)">Order now</button></div>
+      <div class="card"><img src="images/poha.jpg" alt="Poha"><h3>Poha</h3><p>₹25</p><button onclick="addItem('Poha', 25)">Order now</button></div>
+      <div class="card"><img src="images/upma.jpg" alt="Upma"><h3>Upma</h3><p>₹30</p><button onclick="addItem('Upma', 30)">Order now</button></div>
+      <div class="card"><img src="images/pesarattu.jpg" alt="Pesarattu"><h3>Pesarattu</h3><p>₹35</p><button onclick="addItem('Pesarattu', 35)">Order now</button></div>
+     
+    </div>
+
+    <!-- Lunch Category -->
+    <h2 class="category-title">Lunch</h2>
+    <div class="card-container">
+      <div class="card"><img src="images/thali.jpg" alt="Veg Thali"><h3>Veg Thali</h3><p>₹80</p><button onclick="addItem('Veg Thali', 80)">Order now</button></div>
+      <div class="card"><img src="images/chapati.jpg" alt="Chapati & Veg"><h3>Chapati & Veg</h3><p>₹60</p><button onclick="addItem('Chapati & Veg', 60)">Order now</button></div>
+      <div class="card"><img src="images/paneer.jpg" alt="Paneer Curry"><h3>Paneer Curry</h3><p>₹70</p><button onclick="addItem('Paneer Curry', 70)">Order now</button></div>
+      <div class="card"><img src="images/rajma.jpg" alt="Rajma Rice"><h3>Rajma Rice</h3><p>₹60</p><button onclick="addItem('Rajma Rice', 60)">Order now</button></div>
+      <div class="card"><img src="images/jeerarice.jpg" alt="Jeera Rice"><h3>Jeera Rice</h3><p>₹55</p><button onclick="addItem('Jeera Rice', 55)">Order now</button></div>
+ 
+    </div>
+
+    <!-- Drinks Category -->
+    <h2 class="category-title">Drinks</h2>
+    <div class="card-container">
+      <div class="card"><img src="images/tea.jpg" alt="Tea"><h3>Tea (200ml)</h3><p>₹10</p><button onclick="addItem('Tea', 10)">Order now</button></div>
+      <div class="card"><img src="images/coffee.jpg" alt="Cold Coffee"><h3>Cold Coffee</h3><p>₹60</p><button onclick="addItem('Cold Coffee', 60)">Order now</button></div>
+      <div class="card"><img src="images/lassi.jpg" alt="Lassi"><h3>Lassi (250ml)</h3><p>₹30</p><button onclick="addItem('Lassi', 30)">Order now</button></div>
+      <div class="card"><img src="images/juice.jpg" alt="Fruit Juice"><h3>Fruit Juice</h3><p>₹40</p><button onclick="addItem('Fruit Juice', 40)">Order now</button></div>
+      <div class="card"><img src="images/shake.jpg" alt="Milk Shake"><h3>Milk Shake</h3><p>₹50</p><button onclick="addItem('Milk Shake', 50)">Order now</button></div>
+      
+    </div>
+
+    <!-- Desserts Category -->
+    <h2 class="category-title">Desserts</h2>
+    <div class="card-container">
+      <div class="card"><img src="images/icecream.jpg" alt="Ice Cream"><h3>Ice Cream</h3><p>₹50</p><button onclick="addItem('Ice Cream', 50)">Order now</button></div>
+      <div class="card"><img src="images/gulabjamun.jpg" alt="Gulab Jamun"><h3>Gulab Jamun (2 pcs)</h3><p>₹40</p><button onclick="addItem('Gulab Jamun', 40)">Order now</button></div>
+      <div class="card"><img src="images/kheer.jpg" alt="Kheer"><h3>Kheer</h3><p>₹35</p><button onclick="addItem('Kheer', 35)">Order now</button></div>
+      <div class="card"><img src="images/halwa.jpg" alt="Halwa"><h3>Halwa</h3><p>₹30</p><button onclick="addItem('Halwa', 30)">Order now</button></div>
+      <div class="card"><img src="images/rasgulla.jpg" alt="Rasgulla"><h3>Rasgulla</h3><p>₹45</p><button onclick="addItem('Rasgulla', 45)">Order now</button></div>
+       </div>
+
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f4f4f4;
+      padding: 30px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .dashboard-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 25px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 250px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 2rem;
+      color: #222;
+    }
+
+    .card p {
+      margin-top: 10px;
+      color: #666;
+    }
+
+    .product-table {
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: #f7f7f7;
+      font-weight: bold;
+      color: #333;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        width: 90%;
+      }
+
+      th, td {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome Admin!</h1>
+
+  <div class="dashboard-summary">
+    <div class="card">
+      <h2 id="product-count">0</h2>
+      <p>Total Products Sold</p>
+    </div>
+    <div class="card">
+      <h2 id="total-sales">₹0</h2>
+      <p>Total Sales</p>
+    </div>
+  </div>
+
+  <div class="product-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Quantity Sold</th>
+          <th>Total Revenue</th>
+        </tr>
+      </thead>
+      <tbody id="product-rows">
+        <!-- Filled dynamically -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    const productMap = {};
+    let totalQuantity = 0;
+    let totalRevenue = 0;
+
+    orders.forEach(item => {
+      if (!productMap[item.name]) {
+        productMap[item.name] = { quantity: 0, revenue: 0 };
+      }
+
+      productMap[item.name].quantity += item.quantity;
+      productMap[item.name].revenue += item.price * item.quantity;
+
+      totalQuantity += item.quantity;
+      totalRevenue += item.price * item.quantity;
+    });
+
+    document.getElementById("product-count").textContent = totalQuantity;
+    document.getElementById("total-sales").textContent = `₹${totalRevenue}`;
+
+    const tbody = document.getElementById("product-rows");
+    for (let name in productMap) {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${name}</td>
+        <td>${productMap[name].quantity}</td>
+        <td>₹${productMap[name].revenue}</td>
+      `;
+      tbody.appendChild(row);
+    }
+  </script>
+
+</body>
+</html>
+
+

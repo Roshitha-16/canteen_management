@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Worker Dashboard - Canteen Inventory</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+      padding: 30px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #343a40;
+    }
+
+    table {
+      margin: 0 auto;
+      width: 80%;
+      border-collapse: collapse;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 14px 18px;
+      border: 1px solid #dee2e6;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    td {
+      text-align: center;
+    }
+
+    #no-data {
+      color: #6c757d;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Available Items in Canteen</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price (₹)</th>
+        <th>Available Quantity</th>
+      </tr>
+    </thead>
+    <tbody id="inventoryBody">
+      <!-- Items will be populated here -->
+    </tbody>
+  </table>
+
+  <script>
+    const items = JSON.parse(localStorage.getItem("canteenItems")) || [];
+    const tbody = document.getElementById("inventoryBody");
+
+    if (items.length === 0) {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td colspan="3" id="no-data">No items available</td>`;
+      tbody.appendChild(row);
+    } else {
+      items.forEach(item => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>₹${item.price}</td>
+          <td>${item.quantity}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+  </script>
+
+</body>
+</html>
